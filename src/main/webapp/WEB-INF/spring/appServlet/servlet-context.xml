@@ -26,6 +26,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<interceptors>
+		<beans:bean id="webContentInterceptor"
+			class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+			<beans:property name="cacheSeconds" value="0" />
+			<beans:property name="useExpiresHeader" value="true" />
+			<beans:property name="useCacheControlHeader" value="true" />
+			<beans:property name="useCacheControlNoStore" value="true" />
+
+		</beans:bean>
+	</interceptors>
+
 	<context:component-scan base-package="org.java.springsecurity" />
 
 	<beans:bean id="encoder"

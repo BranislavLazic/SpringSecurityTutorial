@@ -5,8 +5,9 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/admin/*"
+	access="hasAnyRole('ROLE_ADMIN','ROLE_MODERATOR') or hasIpAddress('0:0:0:0:0:0:0:1')" />
 	</http>
 
 	<beans:import resource="servlet-context.xml" />
